@@ -1,0 +1,57 @@
+# SPRING PROPERTIES
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/EduSys?autoReconnect=true&useSSL=false
+    username: root
+    password: admin
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    hibernate: 
+         ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        show_sql: true
+        format_sql: true
+        #ddl-auto: update
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  profiles:
+    include:
+      'query'
+
+# JWT : JSON WEB TOKEN PROPERTIES
+jwt:
+  header: Authorization
+  secret: password
+  expiration: 604800
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
+      
+exception:
+  rpi-component-not-found: Component with supplied id was not found
+  invalid-rpi-component-type: Invalid rpi component type
+  invalid-relay-state: Invalid Relay State
+  
+
+twilio:
+  account:
+    sid: TWILIO SID
+    auth_token: TWILIO AUTH TOKEN
+  phone:
+    inbound: TWILIO INBOUND PHONE NUMBER
+    outbound: TWILIO OUTBOUND PHONE NUMBER
+    
+    
+   
+  http:
+    multipart:
+      max-file-size: 512KB
+      max-request-size: 512KB 
+     
